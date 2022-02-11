@@ -27,7 +27,7 @@ public class Futbolistas implements Serializable{
 
 	/** Año de nacimiento */
 	@Column(name = "Año_nacimiento", nullable = false)
-	private Year anyo_nac;
+	private Year anyoNac;
 	
 	/** Nacionalidad del futbolista */
 	@Column(name = "Nacionalidad", nullable = false)

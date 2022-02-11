@@ -12,18 +12,19 @@ import javax.persistence.*;
 public class Equipo implements Serializable{
 
 
-	/** Nombre del equipo (PK) */
+	/** Id del equipo (PK) */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
+	/** Nombre del equipo (PK) */
 	@Column(name = "Nombre", nullable = false)
 	private String nombre;
 
 	
 	/** Año de creacion */
 	@Column(name = "Año_creacion", nullable = false)
-	private Year anyo_crea;
+	private Year anyoCrea;
 
 	/** Nombre del estadio */
 	@Column(name = "Estadio", nullable = false)
