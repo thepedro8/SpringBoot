@@ -2,8 +2,11 @@ package com.pedro.futbol.servicios;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.pedro.futbol.entidades.Futbolistas;
 
+@Service
 public class FutbolistasServiceImpl implements FutbolistasServiceI{
 
 	@Override
@@ -62,6 +65,18 @@ public class FutbolistasServiceImpl implements FutbolistasServiceI{
 
 	@Override
 	public List<Futbolistas> obtenerFutbolistasPorNif(int nif) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Futbolistas> obtenerFutbolistasPorNifYNacion(String nif, String nacionalidad) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Futbolistas> obtenerFutbolistasPorNifONacion(String nif, String nacionalidad) {
 		// TODO Auto-generated method stub
 		return null;
 	}

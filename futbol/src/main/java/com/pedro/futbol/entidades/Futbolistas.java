@@ -5,7 +5,9 @@ import java.time.Year;
 
 import javax.persistence.*;
 
-
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
 import java.util.List;
@@ -14,6 +16,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Futbolistas")
+@Data @AllArgsConstructor @NoArgsConstructor
 public class Futbolistas implements Serializable{
 	/** Id del futbolista (PK) */
 	@Id
@@ -27,7 +30,7 @@ public class Futbolistas implements Serializable{
 
 	/** Año de nacimiento */
 	@Column(name = "Año_nacimiento", nullable = false)
-	private Year anyoNac;
+	private String anyoNac;
 	
 	/** Nacionalidad del futbolista */
 	@Column(name = "Nacionalidad", nullable = false)
@@ -35,7 +38,7 @@ public class Futbolistas implements Serializable{
 	
 	/** NIF del futbolista */
 	@Column(name = "NIF", nullable = false)
-	private int nif;
+	private String nif;
 	
 	@OneToMany(mappedBy = "futbolista")
     private List<Futbolista_Equipo> futbolistaEquipo;

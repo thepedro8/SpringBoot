@@ -5,9 +5,14 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.Year;
 
 @Entity
+@Data @AllArgsConstructor @NoArgsConstructor
 public class Futbolista_Equipo implements Serializable{
 	
 
@@ -33,6 +38,6 @@ public class Futbolista_Equipo implements Serializable{
 	
 	@Column(name = "Anyo_temporada")
 	/** Año de temporada */
-	private Year anyo_temp;
+	private String anyo_temp;
 	
 }

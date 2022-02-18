@@ -20,6 +20,10 @@ public interface FutbolistasServiceI {
 
 	public List<Futbolistas> obtenerFutbolistasPorNifYNombre(final String nif, final String nombre);
 
+	public List<Futbolistas> obtenerFutbolistasPorNifYNacion(final String nif, final String nacionalidad);
+
+	public List<Futbolistas> obtenerFutbolistasPorNifONacion(final String nif, final String nacionalidad);
+
 	public void eliminarFutbolistaPorId(final long IdCoche);
 
 	public void aniadirFutbolista(final Futbolistas futbolista);

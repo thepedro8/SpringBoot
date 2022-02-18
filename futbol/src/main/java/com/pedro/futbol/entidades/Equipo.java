@@ -6,9 +6,14 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 
 @Entity
 @Table(name = "Equipos")
+@Data @AllArgsConstructor @NoArgsConstructor
 public class Equipo implements Serializable{
 
 
@@ -24,7 +29,7 @@ public class Equipo implements Serializable{
 	
 	/** Año de creacion */
 	@Column(name = "Año_creacion", nullable = false)
-	private Year anyoCrea;
+	private String anyoCrea;
 
 	/** Nombre del estadio */
 	@Column(name = "Estadio", nullable = false)

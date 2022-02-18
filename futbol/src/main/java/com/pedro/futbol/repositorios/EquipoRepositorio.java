@@ -14,11 +14,15 @@ public interface EquipoRepositorio extends JpaRepository<Equipo, Long>{
 	
 	Equipo findByNombre(String nombre);
 	
-	List <Equipo> findByAnyoCrea(Year anyoCrea);
+	List <Equipo> findByAnyoCrea(String anyoCrea);
 	
 	List <Equipo> findByEstadio(String nom_estadio);
 	
-	List <Equipo> findByNombreAndAnyoCrea(final String nombre, final Year anyoCrea);
-	List <Equipo> findByAnyoCreaAndEstadio(final Year anyoCrea, final String estadio);
+	List <Equipo> findByNombreOrEstadio(final String nombre, final String nom_estadio);
+	
+	List <Equipo> findByAnyoCreaOrEstadio(final String anyoCrea, final String nom_estadio);
+	
+	List <Equipo> findByNombreAndAnyoCrea(final String nombre, final String anyoCrea);
+	List <Equipo> findByAnyoCreaAndEstadio(final String anyoCrea, final String estadio);
 	List <Equipo> findByNombreAndEstadio(final String nombre, final String estadio);
 }

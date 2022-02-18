@@ -3,8 +3,11 @@ package com.pedro.futbol.servicios;
 import java.time.Year;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.pedro.futbol.entidades.Equipo;
 
+@Service
 public class EquiposServiceImpl implements EquiposServiceI{
 
 	@Override
@@ -20,13 +23,13 @@ public class EquiposServiceImpl implements EquiposServiceI{
 	}
 
 	@Override
-	public List<Equipo> obtenerNombreYAnyoCrea(String nombre, Year anyoCrea) {
+	public List<Equipo> obtenerNombreYAnyoCrea(String nombre, String anyoCrea) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Equipo> obtenerAnyoCreacion(Year anyoCrea) {
+	public List<Equipo> obtenerAnyoCreacion(String anyoCrea) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -38,7 +41,7 @@ public class EquiposServiceImpl implements EquiposServiceI{
 	}
 
 	@Override
-	public List<Equipo> obtenerAnyoCreaYEstadio(Year anyoCrea, String estadio) {
+	public List<Equipo> obtenerAnyoCreaYEstadio(String anyoCrea, String estadio) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -49,6 +52,19 @@ public class EquiposServiceImpl implements EquiposServiceI{
 		return null;
 	}
 
+	@Override
+	public List<Equipo> obtenerNombreOEstadio(String nombre, String estadio) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public List<Equipo> obtenerAnyoOEstadio(String anyoCrea, String estadio) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 	@Override
 	public void eliminarEquipoPorId(long IdEquipo) {
 		// TODO Auto-generated method stub
