@@ -25,4 +25,5 @@ public interface EquipoRepositorio extends JpaRepository<Equipo, Long>{
 	List <Equipo> findByNombreAndAnyoCrea(final String nombre, final String anyoCrea);
 	List <Equipo> findByAnyoCreaAndEstadio(final String anyoCrea, final String estadio);
 	List <Equipo> findByNombreAndEstadio(final String nombre, final String estadio);
+	
 }

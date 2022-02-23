@@ -3,7 +3,6 @@ package com.pedro.futbol.controladores;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,10 +47,10 @@ public class EquipoController {
 	}
 
 	@PostMapping("/actDropEquipo")
-	public String eliminarEquipo(@RequestParam String carId, Model model) {
+	public String eliminarEquipo(@RequestParam String equId, Model model) {
 
 		// Eliminación de equipo
-		equipoServiceI.eliminarEquipoPorId(Long.valueOf(carId));
+		equipoServiceI.eliminarEquipoPorId(Long.valueOf(equId));
 
 		return "redirect:showEquipoView";
 
@@ -70,7 +69,7 @@ public class EquipoController {
 		final String nomEstadio = searchedEquipo.getEstadio();
 
 		System.out.println(anyoCreacion);
-		if (StringUtils.hasText(nombreEquipo)) {
+		if (StringUtils.hasText(nomEquipo)) {
 
 			// Búsqueda por nombre
 			final Equipo equipo = equipoServiceI.obtenerEquipoPorNombre(nomEquipo);
@@ -104,7 +103,7 @@ public class EquipoController {
 	
 	
 	@PostMapping("/actAddEquipo")
-	private String aniadirCoche(@Valid @ModelAttribute Equipo newEquipo, BindingResult result) throws Exception {
+	private String aniadirCoche(@ModelAttribute Equipo newEquipo, BindingResult result) throws Exception {
 
 		if (result.hasErrors()) {
 			throw new Exception("Parámetros de matriculación erróneos");

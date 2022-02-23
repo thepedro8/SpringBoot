@@ -36,6 +36,6 @@ public class Equipo implements Serializable{
 	private String estadio;
 
 	
-	@OneToMany(mappedBy = "equipo")
-    private List<Futbolista_Equipo> futbolistaEquipo;
+	@OneToMany(mappedBy = "equipo", cascade = CascadeType.REMOVE)
+	private List<Futbolista_Equipo> futbolistaEquipo;
 }

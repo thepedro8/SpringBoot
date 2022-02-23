@@ -40,6 +40,6 @@ public class Futbolistas implements Serializable{
 	@Column(name = "NIF", nullable = false)
 	private String nif;
 	
-	@OneToMany(mappedBy = "futbolista")
-    private List<Futbolista_Equipo> futbolistaEquipo;
+	@OneToMany(mappedBy = "futbolista", cascade = CascadeType.REMOVE)
+	private List<Futbolista_Equipo> futbolistaEquipo;
 }

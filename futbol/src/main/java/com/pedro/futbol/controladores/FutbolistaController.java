@@ -59,7 +59,7 @@ public class FutbolistaController {
 
 		final String nomFutbolista = searchedFutbolista.getNombre();
 		final String nacFutbolista = searchedFutbolista.getNacionalidad();
-		final String fecNac = searchedFutbolista.getFecNac();
+		final String fecNac = searchedFutbolista.getAnyoNac();
 		final String nifFutbolista = searchedFutbolista.getNif();
 
 		System.out.println(nifFutbolista);
