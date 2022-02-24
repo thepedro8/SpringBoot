@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>CONCESIONARIO</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	</head>
+	<body class="card-body">
+		<div class="card text-white bg-dark mb-3">
+		  	<div class="card-header">Futbolistas</div>
+			<div class="card-body">
+				<table class="table table-striped table-dark">
+					<thead class="thead-light">
+						<tr>
+							<th scope="col">ID del futbolista</th>
+							<th scope="col">Nombre</th>
+							<th scope="col">NIF</th>
+							<th scope="col">Año de nacimiento</th>
+							<th scope="col">Nacionalidad</th>
+							<th scope="col" th:hidden="${btnDropFutbolistaEnabled}">Eliminar</th>
+						</tr>
+					</thead>
+					<tbody>
+						<th:block th:each="fut : ${futbolistaListView}">
+							<tr>
+								<td scope="row" th:text="${fut.id}" />
+								<td scope="row" th:text="${fut.nombre}" />
+								<td scope="row" th:text="${fut.nif}" />
+								<td scope="row" th:text="${fut.anyoNac}" />
+								<td scope="row" th:text="${fut.nacionalidad}" />
+								<td scope="row" th:hidden="${btnDropFutbolistaEnabled}">
+									<form action="actDropFutbolista" method="post">
+										<button th:disabled="${btnDropFutbolistaEnabled}" type="submit"
+											id="btnDropFutbolista" name="futId" th:value="${fut.id}"
+											class="btn btn-danger">✔</button>
+									</form>
+								</td>
+							</tr>
+						</th:block>
+					</tbody>
+				</table>
+				<a class="btn btn-primary" th:href="@{index}" id="aBtnReturn" role="button">Volver</a>
+			</div>
+		</div>
+	</body>
+</html>

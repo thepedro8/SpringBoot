@@ -32,5 +32,12 @@ public class SystemController {
 	public String redirectToNewEquipoTemplate() {
 		return "newEquipo";
 	}
+	
+	
+	//Redirecciona a la plantilla de insercción
+	@GetMapping("/newFutbolistaView")
+	public String redirectToNewFutbolistaTemplate() {
+		return "newFutbolista";
+	}
 
 }

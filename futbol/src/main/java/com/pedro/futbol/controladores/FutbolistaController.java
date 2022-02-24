@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,28 +27,42 @@ public class FutbolistaController {
 	
 	
 	@GetMapping("/showFutbolistasView")
-	public String mostrarCoches(Model model) {
+	public String mostrarFutbolistas(Model model) {
 
 		// Obtención de futbolistas
 		final List<Futbolistas> listaFutbolista = futbolistaServiceI.obtenerTodosFutbolistas();
 
 		// Carga de datos al modelo
-		model.addAttribute("futbolistasListView", listaFutbolista);
-		model.addAttribute("btnDropFutbolistasEnabled", Boolean.FALSE);
+		model.addAttribute("futbolistaListView", listaFutbolista);
+		model.addAttribute("btnDropFutbolistaEnabled", Boolean.FALSE);
 
 		return "showFutbolistas";
 	}
 
 	@PostMapping("/actDropFutbolista")
-	public String eliminarFutbolista(@RequestParam String futbolistaId, Model model) {
+	public String eliminarFutbolista(@RequestParam String futId, Model model) {
 
 		// Eliminación de futbolista
-		futbolistaServiceI.eliminarFutbolistaPorId(Long.valueOf(futbolistaId));
+		futbolistaServiceI.eliminarFutbolistaPorId(Long.valueOf(futId));
 
-		return "redirect:showFutbolistaView";
+		return "redirect:showFutbolistasView";
 
 	}
 	
+	
+	@PostMapping("/actAddFutbolista")
+	private String aniadirFutbolista(@ModelAttribute Futbolistas newFutbolista, BindingResult result) throws Exception {
+
+		if (result.hasErrors()) {
+			throw new Exception("Parámetros de matriculación erróneos");
+		} else {
+
+			// Se añade el nuevo coche
+			futbolistaServiceI.aniadirFutbolista(newFutbolista);
+		}
+
+		return "redirect:showFutbolistasView";
+	}
 	
 
 	@PostMapping("/actSearchFutbolista")

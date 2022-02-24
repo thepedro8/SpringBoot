@@ -103,7 +103,7 @@ public class EquipoController {
 	
 	
 	@PostMapping("/actAddEquipo")
-	private String aniadirCoche(@ModelAttribute Equipo newEquipo, BindingResult result) throws Exception {
+	private String aniadirEquipo(@ModelAttribute Equipo newEquipo, BindingResult result) throws Exception {
 
 		if (result.hasErrors()) {
 			throw new Exception("Parámetros de matriculación erróneos");

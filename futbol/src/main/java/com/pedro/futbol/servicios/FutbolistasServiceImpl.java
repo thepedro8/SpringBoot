@@ -2,17 +2,23 @@ package com.pedro.futbol.servicios;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pedro.futbol.entidades.Futbolistas;
+import com.pedro.futbol.repositorios.EquipoRepositorio;
+import com.pedro.futbol.repositorios.FutbolistaRepositorio;
 
 @Service
 public class FutbolistasServiceImpl implements FutbolistasServiceI{
 
+	@Autowired
+	private FutbolistaRepositorio futrepo;
+	
 	@Override
 	public List<Futbolistas> obtenerTodosFutbolistas() {
 		// TODO Auto-generated method stub
-		return null;
+		return futrepo.findAll();
 	}
 
 	@Override
@@ -34,15 +40,14 @@ public class FutbolistasServiceImpl implements FutbolistasServiceI{
 	}
 
 	@Override
-	public void eliminarFutbolistaPorId(long IdCoche) {
+	public void eliminarFutbolistaPorId(long IdFutbolista) {
 		// TODO Auto-generated method stub
-		
+		futrepo.deleteById(IdFutbolista);
 	}
 
 	@Override
 	public void aniadirFutbolista(Futbolistas futbolista) {
-		// TODO Auto-generated method stub
-		
+		futrepo.save(futbolista);
 	}
 
 	@Override
