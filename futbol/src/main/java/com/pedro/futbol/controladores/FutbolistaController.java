@@ -69,6 +69,7 @@ public class FutbolistaController {
 	public String submitBuscarFutbolistaForm(@ModelAttribute Futbolistas searchedFutbolista, Model model) throws Exception {
 
 		List<Futbolistas> listaFutbolistas = new ArrayList<Futbolistas>();
+		Futbolistas futbolista = null;
 		
 		System.out.println(searchedFutbolista.getNombre());
 
@@ -78,32 +79,78 @@ public class FutbolistaController {
 		final String nifFutbolista = searchedFutbolista.getNif();
 
 		System.out.println(nifFutbolista);
-		if (StringUtils.hasText(nomFutbolista)) {
+		//Comprueba que solo está relleno el campo de nombre. 
+		if (StringUtils.hasText(nomFutbolista) && (!StringUtils.hasText(nifFutbolista) && !StringUtils.hasText(nacFutbolista) && !StringUtils.hasText(fecNac))) {
 
 			// Búsqueda por nombre
-			final Futbolistas futbolista = futbolistaServiceI.obtenerFutbolistaPorNombre(nomFutbolista);
-
-			if (futbolista != null) {
-				listaFutbolistas.add(futbolista);
-			}
-		} else if (!StringUtils.hasText(nomFutbolista)
-				&& (StringUtils.hasText(nifFutbolista) || StringUtils.hasText(nacFutbolista))) {
-
-			// Búsqueda por marca o modelo
-			listaFutbolistas = futbolistaServiceI.obtenerFutbolistasPorNifONacion(nifFutbolista, nacFutbolista);
+			futbolista = futbolistaServiceI.obtenerFutbolistaPorNombre(nomFutbolista);
 
 		} else if (!StringUtils.hasText(nomFutbolista)
-				&& (StringUtils.hasText(nifFutbolista) && StringUtils.hasText(nacFutbolista))) {
+				&& (StringUtils.hasText(nifFutbolista) && !StringUtils.hasText(nacFutbolista) && !StringUtils.hasText(fecNac))) {
 
+			//Búsqueda por nif.
+			futbolista = futbolistaServiceI.obtenerFutbolistaPorNif(nifFutbolista);
+
+		} else if (!StringUtils.hasText(nomFutbolista)
+				&& (!StringUtils.hasText(nifFutbolista) && StringUtils.hasText(nacFutbolista) && !StringUtils.hasText(fecNac))) {
+
+			//Búsqueda por nacionalidad
+			listaFutbolistas = futbolistaServiceI.obtenerFutbolistasPorNacionalidad(nacFutbolista);
+
+		} else if (!StringUtils.hasText(nomFutbolista)
+				&& (!StringUtils.hasText(nifFutbolista) && !StringUtils.hasText(nacFutbolista) && StringUtils.hasText(fecNac))) {
+
+			//Búsqueda por año de nacimiento
+			listaFutbolistas = futbolistaServiceI.obtenerFutbolistasPorAnyoNac(fecNac);
+
+		} else if (StringUtils.hasText(nomFutbolista)
+				&& (StringUtils.hasText(nifFutbolista) && !StringUtils.hasText(nacFutbolista) && !StringUtils.hasText(fecNac))) {
+
+			//Búsqueda por nombre y por nif
+			listaFutbolistas = futbolistaServiceI.obtenerFutbolistasPorNifYNombre(nifFutbolista, nomFutbolista);
+
+		} else if (StringUtils.hasText(nomFutbolista)
+				&& (!StringUtils.hasText(nifFutbolista) && !StringUtils.hasText(nacFutbolista) && StringUtils.hasText(fecNac))) {
+
+			//Búsqueda por nombre y año de nacimiento
+			listaFutbolistas = futbolistaServiceI.obtenerFutbolistasPorNombreYAnyoNac(nomFutbolista, fecNac);
+
+		} else if (StringUtils.hasText(nomFutbolista)
+				&& (!StringUtils.hasText(nifFutbolista) && StringUtils.hasText(nacFutbolista) && !StringUtils.hasText(fecNac))) {
+
+			//Búsqueda por nombre y nacionalidad
+			listaFutbolistas = futbolistaServiceI.obtenerFutbolistasPorNombreYNacionalidad(nomFutbolista, nacFutbolista);
+
+		} else if (!StringUtils.hasText(nomFutbolista)
+				&& (!StringUtils.hasText(nifFutbolista) && StringUtils.hasText(nacFutbolista) && StringUtils.hasText(fecNac))) {
+
+			//Búsqueda por año de nacimiento y nacionalidad
+			listaFutbolistas = futbolistaServiceI.obtenerFutbolistasPorAnyoNacYNacionalidad(fecNac, nacFutbolista);
+
+		} else if (!StringUtils.hasText(nomFutbolista)
+				&& (StringUtils.hasText(nifFutbolista) && !StringUtils.hasText(nacFutbolista) && StringUtils.hasText(fecNac))) {
+
+			//Búsqueda por año de nacimiento y nif
+			listaFutbolistas = futbolistaServiceI.obtenerFutbolistasPorAnyoNacYNif(fecNac, nifFutbolista);
+
+		} else if (!StringUtils.hasText(nomFutbolista)
+				&& (StringUtils.hasText(nifFutbolista) && StringUtils.hasText(nacFutbolista) && !StringUtils.hasText(fecNac))) {
+
+			//Búsqueda por nif y nacionalidad
 			listaFutbolistas = futbolistaServiceI.obtenerFutbolistasPorNifYNacion(nifFutbolista, nacFutbolista);
 
 		} else {
 			throw new Exception("Parámetros de búsquieda erróneos.");
 		}
+		
+		if (futbolista != null) {
+			listaFutbolistas.add(futbolista);
+			System.out.println(listaFutbolistas.size());
+		}
 
 		// Carga de datos al modelo
-		model.addAttribute("FutbolistaListView", listaFutbolistas);
-		model.addAttribute("btnDropFutbolistaEnabled", Boolean.TRUE);
+		model.addAttribute("futbolistaListView", listaFutbolistas);
+		model.addAttribute("btnDropFutbolistaEnabled", Boolean.FALSE);
 
 		return "showFutbolistas";
 

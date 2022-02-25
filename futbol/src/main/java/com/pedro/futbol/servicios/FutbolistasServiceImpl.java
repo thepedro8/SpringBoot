@@ -24,19 +24,37 @@ public class FutbolistasServiceImpl implements FutbolistasServiceI{
 	@Override
 	public Futbolistas obtenerFutbolistaPorNombre(String Nombre) {
 		// TODO Auto-generated method stub
-		return null;
+		return futrepo.findByNombre(Nombre);
 	}
 
 	@Override
+	public Futbolistas obtenerFutbolistaPorNif(String nif) {
+		// TODO Auto-generated method stub
+		return futrepo.findByNif(nif);
+	}
+	
+	@Override
+	public List<Futbolistas> obtenerFutbolistasPorAnyoNac(String anyoNac) {
+		// TODO Auto-generated method stub
+		return futrepo.findByAnyoNac(anyoNac);
+	}
+
+	@Override
+	public List<Futbolistas> obtenerFutbolistasPorNacionalidad(String nacionalidad) {
+		// TODO Auto-generated method stub
+		return futrepo.findByNacionalidad(nacionalidad);
+	}
+	
+	@Override
 	public List<Futbolistas> obtenerFutbolistasPorNombreYAnyoNac(String nombre, String anioNac) {
 		// TODO Auto-generated method stub
-		return null;
+		return futrepo.findByNombreAndAnyoNac(nombre, anioNac);
 	}
 
 	@Override
 	public List<Futbolistas> obtenerFutbolistasPorNifYNombre(String nif, String nombre) {
 		// TODO Auto-generated method stub
-		return null;
+		return futrepo.findByNifAndNombre(nif, nombre);
 	}
 
 	@Override
@@ -55,35 +73,42 @@ public class FutbolistasServiceImpl implements FutbolistasServiceI{
 		// TODO Auto-generated method stub
 		
 	}
-
+	
 	@Override
-	public List<Futbolistas> obtenerFutbolistasPorAnyoNac(int anyoNac) {
+	public List<Futbolistas> obtenerFutbolistasPorNombreYNacionalidad(String nombre, String nacionalidad) {
 		// TODO Auto-generated method stub
-		return null;
+		return futrepo.findByNombreAndNacionalidad(nombre, nacionalidad);
 	}
-
-	@Override
-	public List<Futbolistas> obtenerFutbolistasPorNacionalidad(String nacionalidad) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Futbolistas> obtenerFutbolistasPorNif(int nif) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public List<Futbolistas> obtenerFutbolistasPorNifYNacion(String nif, String nacionalidad) {
 		// TODO Auto-generated method stub
-		return null;
+		return futrepo.findByNifAndNacionalidad(nif, nacionalidad);
+	}
+
+	//@Override
+	//public List<Futbolistas> obtenerFutbolistasPorNifONacionalidadOAnyoNac(String nif, String nacionalidad, String anyoNac) {
+		// TODO Auto-generated method stub
+		//return futrepo.findByNifOrNacionalidadOrAnyoNac(nif, nacionalidad, anyoNac);
+	//}
+
+	@Override
+	public List<Futbolistas> obtenerFutbolistasPorAnyoNacYNacionalidad(String anyoNac, String nacionalidad) {
+		// TODO Auto-generated method stub
+		return futrepo.findByAnyoNacAndNacionalidad(anyoNac, nacionalidad);
 	}
 
 	@Override
-	public List<Futbolistas> obtenerFutbolistasPorNifONacion(String nif, String nacionalidad) {
+	public List<Futbolistas> obtenerFutbolistasPorAnyoNacYNif(String anyoNac, String nif) {
 		// TODO Auto-generated method stub
-		return null;
+		return futrepo.findByAnyoNacAndNif(anyoNac, nif);  
 	}
+
+	
+
+	
+
+
 
 }

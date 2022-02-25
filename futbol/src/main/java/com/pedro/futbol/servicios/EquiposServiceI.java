@@ -16,8 +16,6 @@ public interface EquiposServiceI {
 
 	public List<Equipo> obtenerEstadio(String nom_estadio);
 	
-	public List<Equipo> obtenerNombreOEstadio(final String nombre, final String nom_estadio);
-	
 	public List<Equipo> obtenerAnyoOEstadio(final String anyoCrea, final String nom_estadio);
 
 	public List<Equipo> obtenerAnyoCreaYEstadio(final String anyoCrea, final String estadio);

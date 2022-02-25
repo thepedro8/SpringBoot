@@ -22,51 +22,46 @@ public class EquiposServiceImpl implements EquiposServiceI{
 	}
 
 	@Override
-	public Equipo obtenerEquipoPorNombre(String Nombre) {
+	public Equipo obtenerEquipoPorNombre(String nombre) {
 		// TODO Auto-generated method stub
-		return eqrepo.findByNombre(Nombre);
+		return eqrepo.findByNombre(nombre);
 	}
 
 	@Override
 	public List<Equipo> obtenerNombreYAnyoCrea(String nombre, String anyoCrea) {
 		// TODO Auto-generated method stub
-		return null;
+		return eqrepo.findByNombreAndAnyoCrea(nombre, anyoCrea);
 	}
 
 	@Override
 	public List<Equipo> obtenerAnyoCreacion(String anyoCrea) {
 		// TODO Auto-generated method stub
-		return null;
+		return eqrepo.findByAnyoCrea(anyoCrea);
 	}
 
 	@Override
 	public List<Equipo> obtenerEstadio(String nom_estadio) {
 		// TODO Auto-generated method stub
-		return null;
+		return eqrepo.findByEstadio(nom_estadio);
 	}
 
 	@Override
 	public List<Equipo> obtenerAnyoCreaYEstadio(String anyoCrea, String estadio) {
 		// TODO Auto-generated method stub
-		return null;
+		return eqrepo.findByAnyoCreaAndEstadio(anyoCrea, estadio);
 	}
 
 	@Override
 	public List<Equipo> obtenerNombreYEstadio(String nombre, String estadio) {
 		// TODO Auto-generated method stub
-		return null;
+		return eqrepo.findByNombreAndEstadio(nombre, estadio);
 	}
 
-	@Override
-	public List<Equipo> obtenerNombreOEstadio(String nombre, String estadio) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	@Override
 	public List<Equipo> obtenerAnyoOEstadio(String anyoCrea, String estadio) {
 		// TODO Auto-generated method stub
-		return null;
+		return eqrepo.findByAnyoCreaOrEstadio(anyoCrea, estadio);
 	}
 	
 	

@@ -2,14 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>FUTBOLISTAS</title>
+		<title>FÚTBOL GESTIÓN DE DATOS - Buscar futbolistas</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Questrial|Readex+Pro">
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
  		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
-  		<style type="text/css">
+		<style>
   			body {background-image: url("img/fondo.png");
   				  height: 600px;
 				  background-position: center;
@@ -23,12 +23,10 @@
 	        		
 	        nav {font-family: Readex Pro;
 	        	font-weight: bold;}
-	        input[type="text"] { text-transform: capitalize;}  
   		</style>
-
 	</head>
-		<body class="card-body">
-		
+	<body class="card-body">
+	
 		<!---------------------------------------Cuerpo de la cabecera de la página------------------------------------------------------>
 		
 		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -62,28 +60,33 @@
 			</div>	
 		</nav>
 		
-		<!---------------------------------------Cuerpo la página------------------------------------------------------>
+		
+		
+		
+		<!---------------------------------Cuerpo de la página donde mostramos el buscador de equipos------------------------------------------>
+		
+		
 		<div class="card text-white bg-dark mb-3">
-		  <div class="card-header">Datos del nuevo futbolista</div>
+		  <div class="card-header">Búsqueda de futbolistas</div>
 		  <div class="card-body">
-				<form th:action="@{/actAddFutbolista}" th:object="${newFutbolista}" method="POST">
+				<form th:action="@{/actSearchFutbolista}" th:object="${searchedFutbolista}" method="POST">
 					<div class="form-group">
 			  			<label for="inpFutRegs">Nombre</label>
-			  			<input type="text" text-transform: "capitalize" required="required" class="form-control" id="inpFutRegs" name="nombre" placeholder="Nombre">
+			  			<input type="text" text-transform: "capitalize" class="form-control" id="inpFutRegs" name="nombre" placeholder="Nombre">
 					</div>
 					<div class="form-group">
 						  <label for="inpFutBrand">Año de nacimiento</label>
-						  <input type="text" required="required" class="form-control" id="inpFutBrand" name="anyoNac" placeholder="Año de nacimiento">
+						  <input type="text" class="form-control" id="inpFutBrand" name="anyoNac" placeholder="Año de nacimiento">
 					</div>
 					<div class="form-group">
 						  <label for="inpFutModel">Nacionalidad</label>
-						  <input required="required" type="text" text-transform: "capitalize" class="form-control" id="inpFutModel" name="nacionalidad" placeholder="Nacionalidad">
+						  <input type="text" text-transform: "capitalize" class="form-control" id="inpFutModel" name="nacionalidad" placeholder="Nacionalidad">
 					</div>
 					<div class="form-group">
 						  <label for="inpFutModel">NIF</label>
-						  <input required="required" type="text" text-transform: "capitalize" class="form-control" id="inpFutModel" name="nif" placeholder="NIF">
+						  <input type="text" text-transform: "capitalize" class="form-control" id="inpFutModel" name="nif" placeholder="NIF">
 					</div>
-					<button type="submit" name="btnAddFutbolista" class="btn btn-success">Añadir</button>
+					<button type="submit" name="btnSearchFutbolistaBy" class="btn btn-success">Buscar</button>
 					<a class="btn btn-primary" href="index" role="button" id="aBtnReturn">Volver</a>
 				</form>
 			  </div>

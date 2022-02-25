@@ -76,6 +76,7 @@ public class EquipoController {
 
 			if (equipo != null) {
 				listaEquipos.add(equipo);
+				System.out.println(listaEquipos.size());
 			}
 		} else if (!StringUtils.hasText(nomEquipo)
 				&& (StringUtils.hasText(anyoCreacion) || StringUtils.hasText(nomEstadio))) {
@@ -87,14 +88,18 @@ public class EquipoController {
 				&& (StringUtils.hasText(anyoCreacion) && StringUtils.hasText(nomEstadio))) {
 
 			listaEquipos = equipoServiceI.obtenerAnyoCreaYEstadio(anyoCreacion, nomEstadio);
+		} else if (!StringUtils.hasText(nomEquipo)
+				&& (StringUtils.hasText(anyoCreacion) && StringUtils.hasText(nomEstadio))) {
+
+			listaEquipos = equipoServiceI.obtenerAnyoCreaYEstadio(anyoCreacion, nomEstadio);
 
 		} else {
 			throw new Exception("Parámetros de búsquieda erróneos.");
 		}
 
 		// Carga de datos al modelo
-		model.addAttribute("EquipoListView", listaEquipos);
-		model.addAttribute("btnDropEquipoEnabled", Boolean.TRUE);
+		model.addAttribute("equipoListView", listaEquipos);
+		model.addAttribute("btnDropEquipoEnabled", Boolean.FALSE);
 
 		return "showEquipos";
 
@@ -108,7 +113,7 @@ public class EquipoController {
 		if (result.hasErrors()) {
 			throw new Exception("Parámetros de matriculación erróneos");
 		} else {
-
+			
 			// Se añade el nuevo coche
 			equipoServiceI.aniadirEquipo(newEquipo);
 		}

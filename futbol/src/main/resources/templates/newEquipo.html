@@ -4,9 +4,66 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>EQUIPOS</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Questrial|Readex+Pro">
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+ 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
+		<style>
+  			body {background-image: url("img/fondo.png");
+  				  height: 600px;
+				  background-position: center;
+				  background-repeat: no-repeat;
+				  background-size: cover;
+				  position: relative;
+				  font-family: Questrial;}
+				  
+	        .menus {padding-left:20px;
+	        		padding-top: 25px;}
+	        		
+	        nav {font-family: Readex Pro;
+	        	font-weight: bold;}
+  		</style>
 	</head>
-		<body class="card-body">
+	</head>
+	<body class="card-body">
+		
+		<!---------------------------------------Cuerpo de la cabecera de la página------------------------------------------------------>
+		
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+			<img th:src="@{img/logo.png}" width="20%" height="20%">
+			
+			<div class="dropdown mb-3">
+				<a class="navbar-brand dropdown-toggle text-white menus" href="#" id="navbarDropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Equipos</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" th:href="@{/showEquiposView}">Ver todos los equipos.</a>
+						<a class="dropdown-item" th:href="@{/searchEquipoByView}">Buscar equipo.</a>
+						<a class="dropdown-item" th:href="@{/newEquipoView}">Añadir equipo.</a>
+					</div>
+			</div>	
+			
+			<div class="dropdown mb-3">
+				<a class="navbar-brand dropdown-toggle text-white menus" href="#" id="navbarDropdown2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Futbolistas</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" th:href="@{/showFutbolistasView}">Ver todos los futbolistas.</a>
+						<a class="dropdown-item" th:href="@{/searchFutbolistaByView}">Buscar futbolista.</a>
+						<a class="dropdown-item" th:href="@{/newFutbolistaView}">Añadir futbolista.</a>
+					</div>
+			</div>	
+			
+			<div class="dropdown mb-3">
+				<a class="navbar-brand dropdown-toggle text-white menus" href="#" id="navbarDropdown3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Trayectorias</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" th:href="@{/showTrayectoriaView}">Historial de futbolistas.</a>
+						<a class="dropdown-item" th:href="@{/searchTrayectoriaByView}">Historial de equipos.</a>
+						<a class="dropdown-item" th:href="@{/newTrayectoriaView}">Añadir trayectoria.</a>
+					</div>
+			</div>	
+		</nav>
+		
+		
+		<!-----------------------------Cuerpo de la página donde mostramos el formulario de equipo-------------------------------------------------->
+		
 		<div class="card text-white bg-dark mb-3">
 		  <div class="card-header">Datos del nuevo equipo</div>
 		  <div class="card-body">

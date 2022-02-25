@@ -7,22 +7,32 @@ import com.pedro.futbol.entidades.Futbolistas;
 
 public interface FutbolistasServiceI {
 	public List<Futbolistas> obtenerTodosFutbolistas();
+	
+	//public List<Futbolistas> obtenerFutbolistasPorNifONacionalidadOAnyoNac(final String nif, final String nacionalidad, final String anyoNac);
 
 	public Futbolistas obtenerFutbolistaPorNombre(final String Nombre);
 	
-	public List<Futbolistas> obtenerFutbolistasPorAnyoNac(int anyoNac);
+	public Futbolistas obtenerFutbolistaPorNif(final String Nif);
 	
-	public List<Futbolistas> obtenerFutbolistasPorNacionalidad(String nacionalidad);
+	public List<Futbolistas> obtenerFutbolistasPorAnyoNac(final String anyoNac);
 	
-	public List<Futbolistas> obtenerFutbolistasPorNif(int nif);
+	public List<Futbolistas> obtenerFutbolistasPorNacionalidad(final String nacionalidad);
 
-	public List<Futbolistas> obtenerFutbolistasPorNombreYAnyoNac(final String nombre, final String anioNac);
-
+	public List<Futbolistas> obtenerFutbolistasPorNombreYAnyoNac(final String nombre, final String anyoNac);
+	
+	public List<Futbolistas> obtenerFutbolistasPorNombreYNacionalidad(final String nombre, final String nacionalidad);
+	
+	public List<Futbolistas> obtenerFutbolistasPorAnyoNacYNacionalidad(final String anyoNac, final String nacionalidad);
+	
+	public List<Futbolistas> obtenerFutbolistasPorAnyoNacYNif(final String anyoNac, final String nif);
+	
+	public List<Futbolistas> obtenerFutbolistasPorNifYNacion(final String nif, final String nacionalidad);
+	
 	public List<Futbolistas> obtenerFutbolistasPorNifYNombre(final String nif, final String nombre);
 
-	public List<Futbolistas> obtenerFutbolistasPorNifYNacion(final String nif, final String nacionalidad);
+	
 
-	public List<Futbolistas> obtenerFutbolistasPorNifONacion(final String nif, final String nacionalidad);
+	
 
 	public void eliminarFutbolistaPorId(final long IdCoche);
 

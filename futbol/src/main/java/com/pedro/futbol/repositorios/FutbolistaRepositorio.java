@@ -10,15 +10,29 @@ import com.pedro.futbol.entidades.Futbolistas;
 
 @Repository
 public interface FutbolistaRepositorio extends JpaRepository<Futbolistas, Long>{
-	List <Futbolistas> findByNombre(String nombre);
+	Futbolistas findByNombre(String nombre);
 	
-	List <Futbolistas> findByAnyoNac(int anyoNac);
+	Futbolistas findByNif(String nif);
+	
+	List <Futbolistas> findByAnyoNac(String anyoNac);
 	
 	List <Futbolistas> findByNacionalidad(String nacionalidad);
 	
-	List <Futbolistas> findByNif(int nif);
+	List <Futbolistas> findByNombreAndAnyoNac(final String nombre, final String anyoNac);
 	
-	List <Futbolistas> findByNombreAndAnyoNac(final String nombre, final Year anyoNac);
-	List <Futbolistas> findByAnyoNacAndNacionalidad(final Year anyoNac, final String nacionalidad);
+	List <Futbolistas> findByNombreAndNacionalidad(final String nombre, final String nacionalidad);
+	
+	List <Futbolistas> findByAnyoNacAndNacionalidad(final String anyoNac, final String nacionalidad);
+	
+	List <Futbolistas> findByAnyoNacAndNif(final String anyoNac, final String nif);
+	
+	List <Futbolistas> findByNifAndNacionalidad(final String nif, final String nacionalidad);
+	
+	
+	
+	
 	List <Futbolistas> findByNifAndNombre(final String nif, final String nombre);
+	
+	List <Futbolistas> findByNifOrNacionalidadOrAnyoNac(final String nif, final String nacionalidad, final String AnyoNac);
+
 }

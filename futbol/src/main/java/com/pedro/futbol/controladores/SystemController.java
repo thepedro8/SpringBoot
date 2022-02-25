@@ -39,5 +39,12 @@ public class SystemController {
 	public String redirectToNewFutbolistaTemplate() {
 		return "newFutbolista";
 	}
+	
+	//Redirecciona a la plantilla de búsqueda
+		@GetMapping("/searchFutbolistaByView")
+		public String redirectToFutbolistaSearchByTemplate() {
+			return "/searchFutbolistaBy";
+		}
+		
 
 }
