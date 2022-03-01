@@ -41,10 +41,17 @@ public class SystemController {
 	}
 	
 	//Redirecciona a la plantilla de búsqueda
-		@GetMapping("/searchFutbolistaByView")
-		public String redirectToFutbolistaSearchByTemplate() {
-			return "/searchFutbolistaBy";
-		}
+	@GetMapping("/searchFutbolistaByView")
+	public String redirectToFutbolistaSearchByTemplate() {
+		return "/searchFutbolistaBy";
+	}
+	
+	
+//	//Redirecciona a la plantilla de búsqueda
+//	@GetMapping("/showHisFutView")
+//	public String redirectToShowHisFutByTemplate() {
+//		return "/showHisFut";
+//	}
 		
 
 }

@@ -34,7 +34,7 @@ public interface FutbolistasServiceI {
 
 	
 
-	public void eliminarFutbolistaPorId(final long IdCoche);
+	public void eliminarFutbolistaPorId(final long IdFutbolista);
 
 	public void aniadirFutbolista(final Futbolistas futbolista);
 

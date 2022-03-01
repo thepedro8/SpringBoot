@@ -52,7 +52,7 @@ public class EquipoController {
 		// Eliminación de equipo
 		equipoServiceI.eliminarEquipoPorId(Long.valueOf(equId));
 
-		return "redirect:showEquipoView";
+		return "redirect:showEquiposView";
 
 	}
 	
@@ -118,6 +118,6 @@ public class EquipoController {
 			equipoServiceI.aniadirEquipo(newEquipo);
 		}
 
-		return "redirect:showEquipoView";
+		return "redirect:showEquiposView";
 	}
 }

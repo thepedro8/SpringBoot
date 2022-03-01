@@ -40,10 +40,10 @@ public class FutbolistaController {
 	}
 
 	@PostMapping("/actDropFutbolista")
-	public String eliminarFutbolista(@RequestParam String futId, Model model) {
+	public String eliminarFutbolista(@RequestParam long futId, Model model) {
 
 		// Eliminación de futbolista
-		futbolistaServiceI.eliminarFutbolistaPorId(Long.valueOf(futId));
+		futbolistaServiceI.eliminarFutbolistaPorId(futId);
 
 		return "redirect:showFutbolistasView";
 
