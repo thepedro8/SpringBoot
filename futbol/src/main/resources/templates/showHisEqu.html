@@ -66,16 +66,16 @@
 		<!---------------------------------------Cuerpo la página------------------------------------------------------>
 		<div class="card text-white bg-dark mb-3">
 		  	<div class="card-header">
-				<form th:action="@{/actSearchTrayectoria}" th:object="${searchedFutbolista}" method="POST">
-			  		<label for="futbolistas">Selecciona futbolista:</label>
+				<form th:action="@{/actSearchHistoria}" th:object="${searchedEquipo}" method="POST">
+			  		<label for="equipos">Selecciona Equipo:</label>
 				  	<select name="id" required="required">
-				  		<option th:each="fut : ${futbolistas}" th:text="${fut.nombre}" th:value="${{fut.id}}"/>
+				  		<option th:each="equ : ${equipos}" th:text="${equ.nombre}" th:value="${{equ.id}}"/>
 				  	</select>
 				  	<!--<div class="form-group">
 			  			<label for="inpFutRegs">Id:</label>
 			  			<input type="text" text-transform: "capitalize" class="form-control" id="inpFutRegs" name="id" placeholder="Nombre">
 					</div>-->
-			  		<button type="submit" name="btnSearchTrayectoriaBy" class="btn btn-success">Buscar datos</button>
+			  		<button type="submit" name="btnSearchHistoriaBy" class="btn btn-success">Buscar datos</button>
 				</form>
 		  	</div>
 			<!--<div class="card-body">

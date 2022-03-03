@@ -54,4 +54,9 @@ public class SystemController {
 //	}
 		
 
+//	//Redirecciona a la plantilla de búsqueda
+//	@GetMapping("/showHisEquView")
+//	public String redirectToShowHisEqByTemplate() {
+//		return "/showHisEqu";
+//	}
 }

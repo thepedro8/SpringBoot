@@ -15,4 +15,7 @@ public interface FutEquiRepositorio extends JpaRepository<Futbolista_Equipo, Lon
 
 	@Query(value = "SELECT * FROM Futbolista_Equipo WHERE futbolista_id = ?", nativeQuery = true)
 	List <Futbolista_Equipo> findByFutbolista(long futbolista);
+	
+	@Query(value = "SELECT * FROM Futbolista_Equipo WHERE equipo_id = ?", nativeQuery = true)
+	List <Futbolista_Equipo> findByEquipo(long idEquipo);
 }
