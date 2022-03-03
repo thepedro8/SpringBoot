@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>CONCESIONARIO</title>
+		<title>FÚTBOL GESTIÓN DE DATOS - Mostrar equipos</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Questrial|Readex+Pro">
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -31,7 +31,9 @@
 	<!---------------------------------------Cuerpo de la cabecera de la página------------------------------------------------------>
 		
 		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-			<img th:src="@{img/logo.png}" width="20%" height="20%">
+			<a th:href="@{/index}" type="button"> 
+				<img th:src="@{img/logo.png}" width="30%" th:href="@{/index}">
+			</a>
 			
 			<div class="dropdown mb-3">
 				<a class="navbar-brand dropdown-toggle text-white menus" href="#" id="navbarDropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Equipos</a>
@@ -54,8 +56,8 @@
 			<div class="dropdown mb-3">
 				<a class="navbar-brand dropdown-toggle text-white menus" href="#" id="navbarDropdown3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Trayectorias</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" th:href="@{/showTrayectoriaView}">Historial de futbolistas</a>
-						<a class="dropdown-item" th:href="@{/searchTrayectoriaByView}">Historial de equipos</a>
+						<a class="dropdown-item" th:href="@{/showHisFutView}">Historial de futbolistas</a>
+						<a class="dropdown-item" th:href="@{/showHisEquView}">Historial de equipos</a>
 						<a class="dropdown-item" th:href="@{/newTrayectoriaView}">Añadir trayectoria</a>
 					</div>
 			</div>	

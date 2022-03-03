@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>EQUIPOS</title>
+		<title>FÚTBOL GESTIÓN DE DATOS - Nueva trayectoria</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Questrial|Readex+Pro">
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -31,7 +31,9 @@
 		<!---------------------------------------Cuerpo de la cabecera de la página------------------------------------------------------>
 		
 		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-			<img th:src="@{img/logo.png}" width="20%" height="20%">
+			<a th:href="@{/index}" type="button"> 
+				<img th:src="@{img/logo.png}" width="30%" th:href="@{/index}">
+			</a>
 			
 			<div class="dropdown mb-3">
 				<a class="navbar-brand dropdown-toggle text-white menus" href="#" id="navbarDropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Equipos</a>
@@ -70,12 +72,12 @@
 				<div class="card-header">
 				<form th:action="@{/actAddTrayectoria}" th:object="${newTrayectoria}" method="POST">
 			  		<label for="futbolistas">Selecciona futbolista:</label>
-					  	<select name="id" required="required">
+					  	<select name="jugador" required="required">
 					  		<option th:each="fut : ${futbolistas}" th:text="${fut.nombre}" th:value="${{fut.id}}"/>
 					  	</select>
 				  	
 				  	<label for="equipos">Selecciona Equipo:</label>
-					  	<select name="id" required="required">
+					  	<select name="equipo" required="required">
 					  		<option th:each="equ : ${equipos}" th:text="${equ.nombre}" th:value="${{equ.id}}"/>
 					  	</select>
 					  	

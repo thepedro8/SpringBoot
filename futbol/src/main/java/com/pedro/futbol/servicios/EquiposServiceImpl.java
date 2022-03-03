@@ -84,4 +84,10 @@ public class EquiposServiceImpl implements EquiposServiceI{
 		eqrepo.save(equipo);
 	}
 
+	@Override
+	public Equipo obtenerEquipoPorId(long id) {
+		// TODO Auto-generated method stub
+		return eqrepo.findById(id);
+	}
+
 }

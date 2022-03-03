@@ -16,6 +16,4 @@ public class Modelo {
 	private String jugador;
 	private String anyo_temp;
 	
-	
-	
 }

@@ -12,6 +12,8 @@ import com.pedro.futbol.entidades.Futbolistas;
 public interface FutbolistaRepositorio extends JpaRepository<Futbolistas, Long>{
 	Futbolistas findByNombre(String nombre);
 	
+	Futbolistas findById(long id);
+	
 	Futbolistas findByNif(String nif);
 	
 	List <Futbolistas> findByAnyoNac(String anyoNac);

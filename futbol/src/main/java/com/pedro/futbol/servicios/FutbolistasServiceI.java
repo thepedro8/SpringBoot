@@ -10,6 +10,8 @@ public interface FutbolistasServiceI {
 	
 	//public List<Futbolistas> obtenerFutbolistasPorNifONacionalidadOAnyoNac(final String nif, final String nacionalidad, final String anyoNac);
 
+	public Futbolistas obtenerFutbolistaPorId(final long id);
+	
 	public Futbolistas obtenerFutbolistaPorNombre(final String Nombre);
 	
 	public Futbolistas obtenerFutbolistaPorNif(final String Nif);

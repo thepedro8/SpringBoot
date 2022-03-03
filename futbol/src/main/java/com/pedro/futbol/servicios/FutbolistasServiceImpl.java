@@ -105,6 +105,12 @@ public class FutbolistasServiceImpl implements FutbolistasServiceI{
 		return futrepo.findByAnyoNacAndNif(anyoNac, nif);  
 	}
 
+	@Override
+	public Futbolistas obtenerFutbolistaPorId(long id) {
+		// TODO Auto-generated method stub
+		return futrepo.findById(id);
+	}
+
 	
 
 	

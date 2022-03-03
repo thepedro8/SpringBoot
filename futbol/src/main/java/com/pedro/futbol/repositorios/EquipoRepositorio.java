@@ -10,7 +10,7 @@ import com.pedro.futbol.entidades.Equipo;
 
 @Repository
 public interface EquipoRepositorio extends JpaRepository<Equipo, Long>{
-	Equipo findById(int id);
+	Equipo findById(long id);
 	
 	Equipo findByNombre(String nombre);
 	

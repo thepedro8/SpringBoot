@@ -10,6 +10,8 @@ public interface EquiposServiceI {
 
 	public Equipo obtenerEquipoPorNombre(final String Nombre);
 	
+	public Equipo obtenerEquipoPorId(final long id);
+	
 	public List<Equipo> obtenerNombreYAnyoCrea(final String nombre, final String anyoCrea);
 	
 	public List<Equipo> obtenerAnyoCreacion(String anyoCrea);

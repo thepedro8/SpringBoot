@@ -32,6 +32,11 @@ public class FutEquiController {
 	@Autowired
 	private EquiposServiceI equipoServiceI;
 	
+	@Autowired
+	private FutbolistasServiceI futbolServiceI;
+	
+	
+	
 	private List<Modelo> lista = null;
 	
 	
@@ -97,30 +102,50 @@ public class FutEquiController {
 	}
 	
 	
-//	@PostMapping("/actDropFutbolista")
-//	public String eliminarFutbolista(@RequestParam String futId, Model model) {
-//
-//		// Eliminación de futbolista
-//		futbolistaServiceI.eliminarFutbolistaPorId(Long.valueOf(futId));
-//
-//		return "redirect:showFutbolistasView";
-//
-//	}
-//	
-//	
-	@PostMapping("/actAddTrayectoria")
-	private String aniadirTrayectoria(@ModelAttribute Futbolista_Equipo newTrayectoria, BindingResult result) throws Exception {
 
-		System.out.print(newTrayectoria.getEquipo().getNombre() + " " + newTrayectoria.getFutbolista().getNombre() + " " + newTrayectoria.getAnyo_temp());
+	@PostMapping("/actAddTrayectoria")
+	private String aniadirTrayectoria(@ModelAttribute Modelo newTrayectoria, BindingResult result) throws Exception {
+
+		List<Futbolista_Equipo> listaTrayectoria = new ArrayList<Futbolista_Equipo>();
+		long idJugador = Long.parseLong(newTrayectoria.getJugador());
+		String anyoTemporada = newTrayectoria.getAnyo_temp();
+		
+		
+		System.out.print(newTrayectoria.toString());
 		if (result.hasErrors()) {
 			throw new Exception("Parámetros de matriculación erróneos");
 		} else {
-
-			// Se añade el nueva trayectoria
-			futEquiServiceI.aniadirTrayectoria(newTrayectoria);
+			listaTrayectoria = futEquiServiceI.obtenerTrayectoriaFutbolista(idJugador);
+			
+			boolean existe = false;
+			
+			for(Futbolista_Equipo fe : listaTrayectoria) {
+				if(fe.getFutbolista().getId() == idJugador && fe.getAnyo_temp().equals(anyoTemporada)) {
+					existe = true;
+				}
+			}
+			
+			if(existe != true) {
+			
+				Futbolistas f = futbolServiceI.obtenerFutbolistaPorId(Long.parseLong(newTrayectoria.getJugador()));
+				Equipo e = equipoServiceI.obtenerEquipoPorId(Long.parseLong(newTrayectoria.getEquipo()));
+	
+				Futbolista_Equipo fe = new Futbolista_Equipo();
+				fe.setFutbolista(f);
+				fe.setEquipo(e);
+				fe.setAnyo_temp(newTrayectoria.getAnyo_temp());
+				
+				// Se añade el nueva trayectoria
+				futEquiServiceI.aniadirTrayectoria(fe);
+				
+				return "redirect:index";
+			} else {
+				System.out.println("No se ha añadido el jugador porque ese año ya estaba en un equipo.");
+				
+			}
 		}
 
-		return "redirect:showHisEquView";
+		return "redirect:index";
 	}
 //	
 
@@ -136,7 +161,6 @@ public class FutEquiController {
 		
 		String anyo  = "";
 
-		Equipo e = null;
 		Modelo t = null;
 
 		//Comprueba que solo está relleno el campo de nombre. 
@@ -173,7 +197,6 @@ public class FutEquiController {
 		
 		String anyo  = "";
 
-		Futbolistas f = null;
 		Modelo t = null;
 
 		//Comprueba que solo está relleno el campo de nombre. 
