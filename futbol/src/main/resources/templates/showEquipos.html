@@ -76,6 +76,7 @@
 							<th scope="col">Nombre</th>
 							<th scope="col">Año de creación</th>
 							<th scope="col">Estadio</th>
+							<th scope="col" th:hidden="${btnEditEquipoEnabled}">Editar</th>
 							<th scope="col" th:hidden="${btnDropEquipoEnabled}">Eliminar</th>
 						</tr>
 					</thead>
@@ -86,7 +87,14 @@
 								<td scope="row" th:text="${equ.nombre}" />
 								<td scope="row" th:text="${equ.anyoCrea}" />
 								<td scope="row" th:text="${equ.estadio}" />
-								<td scope="row" th:hidden="${btnDropEsquipoEnabled}">
+								<td scope="row" th:hidden="${btnEditEquipoEnabled}">
+									<form action="editEquipoView" method="get">
+										<button th:disabled="${btnEditEquipoEnabled}" type="submit"
+											id="btnEditEquipo" name="equipoId" th:value="${equ.id}"
+											class="btn btn-warning">📝</button>
+									</form>
+								</td>
+		 						<td scope="row" th:hidden="${btnDropEsquipoEnabled}">
 									<form action="actDropEquipo" method="post">
 										<button th:disabled="${btnDropEquipoEnabled}" type="submit"
 											id="btnDropEquipo" name="equId" th:value="${equ.id}"

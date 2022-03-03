@@ -104,7 +104,7 @@ public class FutEquiController {
 	
 
 	@PostMapping("/actAddTrayectoria")
-	private String aniadirTrayectoria(@ModelAttribute Modelo newTrayectoria, BindingResult result) throws Exception {
+	private String aniadirTrayectoria(@ModelAttribute Modelo newTrayectoria, BindingResult result, Model model) throws Exception {
 
 		List<Futbolista_Equipo> listaTrayectoria = new ArrayList<Futbolista_Equipo>();
 		long idJugador = Long.parseLong(newTrayectoria.getJugador());
@@ -139,13 +139,14 @@ public class FutEquiController {
 				futEquiServiceI.aniadirTrayectoria(fe);
 				
 				return "redirect:index";
+				
 			} else {
 				System.out.println("No se ha añadido el jugador porque ese año ya estaba en un equipo.");
-				
-			}
-		}
 
-		return "redirect:index";
+				return "redirect:error";
+			}
+			
+		}
 	}
 //	
 

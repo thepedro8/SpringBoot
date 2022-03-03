@@ -1,7 +1,10 @@
 package com.pedro.futbol.controladores;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 
 import com.pedro.futbol.entidades.Equipo;
 import com.pedro.futbol.servicios.EquiposServiceI;
@@ -116,6 +118,47 @@ public class EquipoController {
 			
 			// Se añade el nuevo coche
 			equipoServiceI.aniadirEquipo(newEquipo);
+		}
+
+		return "redirect:showEquiposView";
+	}
+	
+	
+	
+	 @GetMapping("/editEquipoView")
+		public String recogerEquipo(String equipoId, Model model) {
+
+			// Obtención de equipos
+
+		  	long idEquipo = Long.valueOf(equipoId);
+		  
+			Equipo p = equipoServiceI.obtenerEquipoPorId(Long.valueOf(equipoId));
+
+			// Carga de datos al modelo
+			model.addAttribute("id", p.getId());
+			model.addAttribute("nombre", p.getNombre());
+			model.addAttribute("estadio", p.getEstadio());
+			model.addAttribute("anyoCrea", p.getAnyoCrea());
+
+			return "editEquipo";
+		}
+	 
+	 
+	
+	@PostMapping("/actEditEquipo")
+	public String editarEquipo(@ModelAttribute Equipo editEquipo, BindingResult result) throws Exception {
+
+		if (result.hasErrors()) {
+			throw new Exception("Parámetros de matriculación erróneos");
+		} else {
+			
+			Equipo e = equipoServiceI.obtenerEquipoPorId(editEquipo.getId());
+
+			e.setNombre(editEquipo.getNombre());
+			e.setEstadio(editEquipo.getEstadio());
+			e.setAnyoCrea(editEquipo.getAnyoCrea());
+
+			equipoServiceI.actualizarEquipo(e);
 		}
 
 		return "redirect:showEquiposView";

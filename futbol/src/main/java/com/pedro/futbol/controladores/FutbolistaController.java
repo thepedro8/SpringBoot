@@ -155,4 +155,47 @@ public class FutbolistaController {
 		return "showFutbolistas";
 
 	}
+	
+	
+	 @GetMapping("/editFutbolistaView")
+		public String recogerFutbolista(String futId, Model model) {
+
+			// Obtención de equipos
+
+		  	long idFutbolista = Long.valueOf(futId);
+		  
+			Futbolistas f = futbolistaServiceI.obtenerFutbolistaPorId(idFutbolista);
+
+			// Carga de datos al modelo
+			model.addAttribute("id", f.getId());
+			model.addAttribute("nombre", f.getNombre());
+			model.addAttribute("anyoNac", f.getAnyoNac());
+			model.addAttribute("nacionalidad", f.getNacionalidad());
+			model.addAttribute("nif", f.getNif());
+
+			return "editFutbolista";
+		}
+	 
+	 
+	
+	@PostMapping("/actEditFutbolista")
+	public String editarEquipo(@ModelAttribute Futbolistas editFutbolista, BindingResult result) throws Exception {
+
+		if (result.hasErrors()) {
+			throw new Exception("Parámetros de matriculación erróneos");
+		} else {
+			
+			long idFutbolista = Long.valueOf(editFutbolista.getId());
+			Futbolistas f = futbolistaServiceI.obtenerFutbolistaPorId(idFutbolista);
+
+			f.setNombre(editFutbolista.getNombre());
+			f.setAnyoNac(editFutbolista.getAnyoNac());
+			f.setNacionalidad(editFutbolista.getNacionalidad());
+			f.setNif(editFutbolista.getNif());
+
+			futbolistaServiceI.actualizarFutbolista(f);
+		}
+
+		return "redirect:showFutbolistasView";
+	}
 }

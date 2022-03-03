@@ -71,7 +71,7 @@ public class FutbolistasServiceImpl implements FutbolistasServiceI{
 	@Override
 	public void actualizarFutbolista(Futbolistas futbolista) {
 		// TODO Auto-generated method stub
-		
+		futrepo.save(futbolista);
 	}
 	
 	@Override
