@@ -45,10 +45,6 @@ public class FutEquiController {
 
 		// Obtención de futbolistas
 		final List<Futbolistas> listaFutbolista = futEquiServiceI.obtenerTodosFutbolistas();
-		//System.out.println(listaFutbolista.size());
-		//for	(Futbolistas d : listaFutbolista) {
-			//System.out.println(d.getId());
-		//}
 
 		// Carga de datos al modelo
 		model.addAttribute("futbolistas", listaFutbolista);
@@ -64,10 +60,6 @@ public class FutEquiController {
 
 		// Obtención de equipos
 		final List<Equipo> listaEquipo = futEquiServiceI.obtenerTodosEquipos();
-		System.out.println(listaEquipo.size());
-		for	(Equipo d : listaEquipo) {
-			System.out.println(d.getId() + " " + d.getNombre());
-		}
 
 		// Carga de datos al modelo
 		model.addAttribute("equipos", listaEquipo);
@@ -81,17 +73,10 @@ public class FutEquiController {
 
 		// Obtención de futbolistas
 		final List<Futbolistas> listaFutbolista = futEquiServiceI.obtenerTodosFutbolistas();
-		//System.out.println(listaFutbolista.size());
-		//for	(Futbolistas d : listaFutbolista) {
-			//System.out.println(d.getId());
-		//}
+
 		
 		// Obtención de equipos
 		final List<Equipo> listaEquipo = futEquiServiceI.obtenerTodosEquipos();
-		System.out.println(listaEquipo.size());
-		for	(Equipo d : listaEquipo) {
-			System.out.println(d.getId() + " " + d.getNombre());
-		}
 
 		// Carga de datos al modelo
 		model.addAttribute("equipos", listaEquipo);
@@ -110,8 +95,14 @@ public class FutEquiController {
 		long idJugador = Long.parseLong(newTrayectoria.getJugador());
 		String anyoTemporada = newTrayectoria.getAnyo_temp();
 		
-		
-		System.out.print(newTrayectoria.toString());
+		if(!anyoTemporada.isEmpty()) {
+			int anyo = Integer.parseInt(anyoTemporada);
+			
+			if(anyo<=0 || anyo>2999 ) {
+				throw new Exception("No se puede introducir un año menor o igual a 0 o mayor a 2999");
+			}
+		}
+
 		if (result.hasErrors()) {
 			throw new Exception("Parámetros de matriculación erróneos");
 		} else {
@@ -142,8 +133,7 @@ public class FutEquiController {
 				
 			} else {
 				System.out.println("No se ha añadido el jugador porque ese año ya estaba en un equipo.");
-
-				return "redirect:error";
+				throw new Exception("No se ha añadido el jugador porque ese año ya estaba en un equipo.");
 			}
 			
 		}
@@ -159,8 +149,6 @@ public class FutEquiController {
 		System.out.println(searchedFutbolista);
 
 		final long idFutbolista = searchedFutbolista.getId();
-		
-		String anyo  = "";
 
 		Modelo t = null;
 
@@ -195,8 +183,6 @@ public class FutEquiController {
 		System.out.println(searchedEquipo);
 
 		final long idEquipo = searchedEquipo.getId();
-		
-		String anyo  = "";
 
 		Modelo t = null;
 

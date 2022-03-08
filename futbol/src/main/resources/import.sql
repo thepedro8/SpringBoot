@@ -1,7 +1,7 @@
-INSERT INTO equipos VALUES (1,'1954','Estadio Nuevo El Arcángel','Córdoba C.F.');
-INSERT INTO equipos VALUES (2,'1903','Camp Nou','F.C. Barcelona');
-INSERT INTO equipos VALUES (3,'1902','Estadio Santiago Bernabéu','Real Madrid C.F.');
-INSERT INTO equipos VALUES (4,'1903','Wanda Metropolitano','Atlético de Madrid');
+INSERT INTO equipos VALUES (1, "1954",'Estadio Nuevo El Arcángel','Córdoba C.F.');
+INSERT INTO equipos VALUES (2, "1903",'Camp Nou','F.C. Barcelona');
+INSERT INTO equipos VALUES (3, "1902",'Estadio Santiago Bernabéu','Real Madrid C.F.');
+INSERT INTO equipos VALUES (4, "1903",'Wanda Metropolitano','Atlético de Madrid');
 
 INSERT INTO futbolistas VALUES (1,'1990','Española', '1111111A','José Ruiz');
 INSERT INTO futbolistas VALUES (2,'1987','Argentina', '2222222B', 'Lionel Messi');

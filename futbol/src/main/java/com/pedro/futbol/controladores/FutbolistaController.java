@@ -71,14 +71,20 @@ public class FutbolistaController {
 		List<Futbolistas> listaFutbolistas = new ArrayList<Futbolistas>();
 		Futbolistas futbolista = null;
 		
-		System.out.println(searchedFutbolista.getNombre());
 
 		final String nomFutbolista = searchedFutbolista.getNombre();
 		final String nacFutbolista = searchedFutbolista.getNacionalidad();
 		final String fecNac = searchedFutbolista.getAnyoNac();
 		final String nifFutbolista = searchedFutbolista.getNif();
 
-		System.out.println(nifFutbolista);
+		if(!fecNac.isEmpty()) {
+			int anyo = Integer.parseInt(fecNac);
+			
+			if(anyo<=0 || anyo>2999 ) {
+				throw new Exception("No se puede introducir un año menor o igual a 0 o mayor a 2999");
+			}
+		}
+		
 		//Comprueba que solo está relleno el campo de nombre. 
 		if (StringUtils.hasText(nomFutbolista) && (!StringUtils.hasText(nifFutbolista) && !StringUtils.hasText(nacFutbolista) && !StringUtils.hasText(fecNac))) {
 
@@ -145,7 +151,6 @@ public class FutbolistaController {
 		
 		if (futbolista != null) {
 			listaFutbolistas.add(futbolista);
-			System.out.println(listaFutbolistas.size());
 		}
 
 		// Carga de datos al modelo

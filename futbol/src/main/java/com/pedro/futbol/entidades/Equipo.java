@@ -1,7 +1,7 @@
 package com.pedro.futbol.entidades;
 
 import java.io.Serializable;
-import java.time.Year;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
@@ -28,7 +28,7 @@ public class Equipo implements Serializable{
 
 	
 	/** Año de creacion */
-	@Column(name = "Año_creacion", nullable = false)
+	@Column(name = "Año_creacion", length=4, nullable = false)
 	private String anyoCrea;
 
 	/** Nombre del estadio */

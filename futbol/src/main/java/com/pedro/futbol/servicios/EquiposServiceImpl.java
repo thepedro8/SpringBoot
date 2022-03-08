@@ -27,11 +27,6 @@ public class EquiposServiceImpl implements EquiposServiceI{
 		return eqrepo.findByNombre(nombre);
 	}
 
-	@Override
-	public List<Equipo> obtenerNombreYAnyoCrea(String nombre, String anyoCrea) {
-		// TODO Auto-generated method stub
-		return eqrepo.findByNombreAndAnyoCrea(nombre, anyoCrea);
-	}
 
 	@Override
 	public List<Equipo> obtenerAnyoCreacion(String anyoCrea) {
@@ -49,19 +44,6 @@ public class EquiposServiceImpl implements EquiposServiceI{
 	public List<Equipo> obtenerAnyoCreaYEstadio(String anyoCrea, String estadio) {
 		// TODO Auto-generated method stub
 		return eqrepo.findByAnyoCreaAndEstadio(anyoCrea, estadio);
-	}
-
-	@Override
-	public List<Equipo> obtenerNombreYEstadio(String nombre, String estadio) {
-		// TODO Auto-generated method stub
-		return eqrepo.findByNombreAndEstadio(nombre, estadio);
-	}
-
-	
-	@Override
-	public List<Equipo> obtenerAnyoOEstadio(String anyoCrea, String estadio) {
-		// TODO Auto-generated method stub
-		return eqrepo.findByAnyoCreaOrEstadio(anyoCrea, estadio);
 	}
 	
 	

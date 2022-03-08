@@ -63,47 +63,52 @@ public class EquipoController {
 	public String submitBuscarEquipoForm(@ModelAttribute Equipo searchedEquipo, Model model) throws Exception {
 
 		List<Equipo> listaEquipos = new ArrayList<Equipo>();
-		
-		System.out.println(searchedEquipo.getNombre());
 
 		final String nomEquipo = searchedEquipo.getNombre();
 		final String anyoCreacion = searchedEquipo.getAnyoCrea();
 		final String nomEstadio = searchedEquipo.getEstadio();
 
-		System.out.println(anyoCreacion);
-		if (StringUtils.hasText(nomEquipo)) {
-
-			// Búsqueda por nombre
-			final Equipo equipo = equipoServiceI.obtenerEquipoPorNombre(nomEquipo);
-
-			if (equipo != null) {
-				listaEquipos.add(equipo);
-				System.out.println(listaEquipos.size());
+		if(!anyoCreacion.isEmpty()) {
+			int anyo = Integer.parseInt(anyoCreacion);
+			
+			if(anyo<=0 || anyo>2999 ) {
+				throw new Exception("No se puede introducir un año menor o igual a 0 o mayor a 2999");
 			}
-		} else if (!StringUtils.hasText(nomEquipo)
-				&& (StringUtils.hasText(anyoCreacion) || StringUtils.hasText(nomEstadio))) {
-
-			// Búsqueda por marca o modelo
-			listaEquipos = equipoServiceI.obtenerAnyoOEstadio(anyoCreacion, nomEstadio);
-
-		} else if (!StringUtils.hasText(nomEquipo)
-				&& (StringUtils.hasText(anyoCreacion) && StringUtils.hasText(nomEstadio))) {
-
-			listaEquipos = equipoServiceI.obtenerAnyoCreaYEstadio(anyoCreacion, nomEstadio);
-		} else if (!StringUtils.hasText(nomEquipo)
-				&& (StringUtils.hasText(anyoCreacion) && StringUtils.hasText(nomEstadio))) {
-
-			listaEquipos = equipoServiceI.obtenerAnyoCreaYEstadio(anyoCreacion, nomEstadio);
-
-		} else {
-			throw new Exception("Parámetros de búsquieda erróneos.");
 		}
-
-		// Carga de datos al modelo
-		model.addAttribute("equipoListView", listaEquipos);
-		model.addAttribute("btnDropEquipoEnabled", Boolean.FALSE);
-
-		return "showEquipos";
+		
+			if (StringUtils.hasText(nomEquipo)) {
+	
+				// Búsqueda por nombre
+				final Equipo equipo = equipoServiceI.obtenerEquipoPorNombre(nomEquipo);
+	
+				if (equipo != null) {
+					listaEquipos.add(equipo);
+					System.out.println(listaEquipos.size());
+				}
+			} else if (!StringUtils.hasText(nomEquipo)
+					&& (StringUtils.hasText(anyoCreacion) && !StringUtils.hasText(nomEstadio))) {
+	
+				listaEquipos = equipoServiceI.obtenerAnyoCreacion(anyoCreacion);
+	
+			} else if (!StringUtils.hasText(nomEquipo)
+					&& (!StringUtils.hasText(anyoCreacion) && StringUtils.hasText(nomEstadio))) {
+	
+				listaEquipos = equipoServiceI.obtenerEstadio(nomEstadio);
+	
+			}else if (!StringUtils.hasText(nomEquipo)
+					&& (StringUtils.hasText(anyoCreacion) && StringUtils.hasText(nomEstadio))) {
+	
+				listaEquipos = equipoServiceI.obtenerAnyoCreaYEstadio(anyoCreacion, nomEstadio);
+			} else {
+				throw new Exception("Parámetros de búsqueda erróneos.");
+			}
+	
+			// Carga de datos al modelo
+			model.addAttribute("equipoListView", listaEquipos);
+			model.addAttribute("btnDropEquipoEnabled", Boolean.FALSE);
+	
+			return "showEquipos";
+		
 
 	}
 	
@@ -116,8 +121,14 @@ public class EquipoController {
 			throw new Exception("Parámetros de matriculación erróneos");
 		} else {
 			
-			// Se añade el nuevo coche
-			equipoServiceI.aniadirEquipo(newEquipo);
+			int anyo = Integer.parseInt(newEquipo.getAnyoCrea());
+			
+			if(anyo<=0 || anyo>2999 ) {
+				throw new Exception("No se puede introducir un año menor o igual a 0 o mayor a 2999");
+			} else {
+				// Se añade el nuevo equipo
+				equipoServiceI.aniadirEquipo(newEquipo);
+			}
 		}
 
 		return "redirect:showEquiposView";
@@ -157,6 +168,14 @@ public class EquipoController {
 			e.setNombre(editEquipo.getNombre());
 			e.setEstadio(editEquipo.getEstadio());
 			e.setAnyoCrea(editEquipo.getAnyoCrea());
+			
+			int anyo = Integer.parseInt(editEquipo.getAnyoCrea());
+
+			if(anyo<=0 || anyo>2999 ) {
+				throw new Exception("No se puede introducir un año menor o igual a 0 o mayor a 2999");
+			} else {
+				e.setAnyoCrea(editEquipo.getAnyoCrea());
+			}
 
 			equipoServiceI.actualizarEquipo(e);
 		}
