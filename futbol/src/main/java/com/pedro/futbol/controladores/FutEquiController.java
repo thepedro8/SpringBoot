@@ -23,6 +23,12 @@ import com.pedro.futbol.servicios.EquiposServiceI;
 import com.pedro.futbol.servicios.FutEquiServiceI;
 import com.pedro.futbol.servicios.FutbolistasServiceI;
 
+
+/***
+ * Clase controlador para las vistas que interactúan con la clase Futbolista_Equipo
+ * @author Pedro
+ *
+ */
 @Controller
 public class FutEquiController {
 	
@@ -39,7 +45,11 @@ public class FutEquiController {
 	
 	private List<Modelo> lista = null;
 	
-	
+	/***
+	 * Método que sirve para mostrar los futbolistas en la lista despegable de la vista.
+	 * @param model Representa la vista
+	 * @return Retorna la vista de selección de jugador con la lista cargada.
+	 */
 	@GetMapping("/showHisFutView")
 	public String mostrarFutbolistas(Model model) {
 
@@ -54,7 +64,11 @@ public class FutEquiController {
 	
 	
 	
-	
+	/***
+	 * Método que sirve para mostrar los equipos en la lista despegable de la vista.
+	 * @param model Representa la vista
+	 * @return Retorna la vista de selección de equipos con la lista cargada.
+	 */
 	@GetMapping("/showHisEquView")
 	public String mostrarEquipos(Model model) {
 
@@ -68,6 +82,12 @@ public class FutEquiController {
 	}
 	
 	
+	
+	/***
+	 * Método que rellena las listas despegables de la vista con los futbolistas y los equipos
+	 * @param model Representa la vista
+	 * @return Retorna la vista con las listas cargadas.
+	 */
 	@GetMapping("/newTrayectoriaView")
 	public String mostrarNombres(Model model) {
 
@@ -87,7 +107,14 @@ public class FutEquiController {
 	}
 	
 	
-
+	/***
+	 * Método que añade una nueva tupla a la tabla de Futbolista_equipo de la base de datos.
+	 * @param newTrayectoria Objeto que contiene los datos de la nueva tupla.
+	 * @param result Resultado de la validacion del objeto
+	 * @param model Representa la vista
+	 * @return Retorna la pantalla principal una vez terminado.
+	 * @throws Exception Controla la introducción de datos correctos y que no se repita una trayectoria en el mismo año.
+	 */
 	@PostMapping("/actAddTrayectoria")
 	private String aniadirTrayectoria(@ModelAttribute Modelo newTrayectoria, BindingResult result, Model model) throws Exception {
 
@@ -138,16 +165,22 @@ public class FutEquiController {
 			
 		}
 	}
-//	
+	
 
+	
+	/***
+	 * Método que busca la trayectoria de un futbolista
+	 * @param searchedFutbolista Objeto que contiene la id del jugador a buscar.
+	 * @param model Representa la vista
+	 * @return Retorna una vista que muestra la trayectoria del futbolista en los distintos equipos.
+	 * @throws Exception  Controla que el formato de datos introducidos sean correctos.
+	 */
 	@PostMapping("/actSearchTrayectoria")
 	public String submitBuscarTrayectoriaForm(@ModelAttribute Futbolistas searchedFutbolista, Model model) throws Exception {
 
 		List<Futbolista_Equipo> listaTrayectoria = new ArrayList<Futbolista_Equipo>();
 		lista = new ArrayList<Modelo>();
 		
-		System.out.println(searchedFutbolista);
-
 		final long idFutbolista = searchedFutbolista.getId();
 
 		Modelo t = null;
@@ -174,13 +207,18 @@ public class FutEquiController {
 	
 	
 	
+	/***
+	 * Método que busca los futbolistas que ha tenido un equipo a lo largo de los años.
+	 * @param searchedEquipo Objeto que contiene la id del equipo a buscar.
+	 * @param model Representa la vista
+	 * @return Retorna una vista que muestra los futbolistas que ha estado en un equipo a lo largo de los años.
+	 * @throws Exception Controla que el formato de datos introducidos sean correctos.
+	 */
 	@PostMapping("/actSearchHistoria")
 	public String submitBuscarHistoriaForm(@ModelAttribute Equipo searchedEquipo, Model model) throws Exception {
 
 		List<Futbolista_Equipo> listaHistoria = new ArrayList<Futbolista_Equipo>();
 		lista = new ArrayList<Modelo>();
-		
-		System.out.println(searchedEquipo);
 
 		final long idEquipo = searchedEquipo.getId();
 

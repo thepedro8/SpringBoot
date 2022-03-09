@@ -11,33 +11,43 @@ import lombok.NoArgsConstructor;
 
 import java.time.Year;
 
+/***
+ * Clase Futbolista_Equipo donde se encuentran las propiedades del objeto
+ * @author Pedro
+ */
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor
 public class Futbolista_Equipo implements Serializable{
 	
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Id de la tupla
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	/** Id del futbolista (PK) */
+	/***
+	 *  Id del futbolista (PK) 
+	 */
 	@ManyToOne
     @JoinColumn(name = "futbolista_id")
 	private Futbolistas futbolista;
 	
-	/** Nombre del equipo (PK) */
+	/***
+	 *  Nombre del equipo (PK) 
+	 */
 	@ManyToOne
     @JoinColumn(name = "equipo_id")
 	private Equipo equipo;
 	
-	
+	/***
+	 * Año de temporada
+	 */
 	@Column(name = "Anyo_temporada")
-	/** Año de temporada */
 	private String anyo_temp;
 	
 }

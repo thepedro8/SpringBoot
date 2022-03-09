@@ -13,33 +13,51 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-
+/***
+ * Clase Futbolistas donde se encuentran las propiedades del objeto
+ * @author Pedro
+ */
 @Entity
 @Table(name = "Futbolistas")
 @Data @AllArgsConstructor @NoArgsConstructor
 public class Futbolistas implements Serializable{
-	/** Id del futbolista (PK) */
+	/***
+	 *  Id del futbolista (PK) 
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
 	
-	/** Nombre del futbolista */
+	/*** 
+	 * Nombre del futbolista 
+	 */
 	@Column(name = "Nombre", nullable = false)
 	private String nombre;
 
-	/** Año de nacimiento */
+	/***
+	 *  Año de nacimiento 
+	 */
 	@Column(name = "Año_nacimiento", nullable = false)
 	private String anyoNac;
 	
-	/** Nacionalidad del futbolista */
+	/***
+	 *  Nacionalidad del futbolista 
+	 */
 	@Column(name = "Nacionalidad", nullable = false)
 	private String nacionalidad;
 	
-	/** NIF del futbolista */
+	
+	/***
+	 *  NIF del futbolista 
+	 */
 	@Column(name = "NIF", nullable = false)
 	private String nif;
 	
+	
+	/***
+	 * Lista de futbolista_equipo
+	 */
 	@OneToMany(mappedBy = "futbolista", cascade = CascadeType.REMOVE)
 	private List<Futbolista_Equipo> futbolistaEquipo;
 }

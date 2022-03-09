@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.pedro.futbol.controladores"},{"l":"com.pedro.futbol.entidades"},{"l":"com.pedro.futbol.modelo"},{"l":"com.pedro.futbol.repositorios"},{"l":"com.pedro.futbol.servicios"}];updateSearchResults();

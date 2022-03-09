@@ -19,6 +19,11 @@ import com.pedro.futbol.entidades.Equipo;
 import com.pedro.futbol.entidades.Futbolistas;
 import com.pedro.futbol.servicios.FutbolistasServiceI;
 
+/***
+ * Clase controlador para las vistas que interactúan con la clase Futbolistas
+ * @author Pedro
+ *
+ */
 @Controller
 public class FutbolistaController {
 	
@@ -26,6 +31,11 @@ public class FutbolistaController {
 	private FutbolistasServiceI futbolistaServiceI;
 	
 	
+	/***
+	 * Método que carga la vista con los datos de todo los futbolistas encontrados en la base de datos.
+	 * @param model Representa la vista
+	 * @return Retorna la vista con los datos de todo los futbolistas encontrados.
+	 */
 	@GetMapping("/showFutbolistasView")
 	public String mostrarFutbolistas(Model model) {
 
@@ -39,6 +49,14 @@ public class FutbolistaController {
 		return "showFutbolistas";
 	}
 
+	
+	
+	/***
+	 * Método que se utiliza para eliminar a un futbolista de la base de datos.
+	 * @param futId Id del futbolista a eliminar.
+	 * @param model Representa la vista
+	 * @return Retorna el listado de futbolista que se encuentran en la base de datos y así ver los cambios realizados.
+	 */
 	@PostMapping("/actDropFutbolista")
 	public String eliminarFutbolista(@RequestParam long futId, Model model) {
 
@@ -50,6 +68,14 @@ public class FutbolistaController {
 	}
 	
 	
+	
+	/***
+	 * Método que utilizamos para añadir futbolistas a la base de datos.
+	 * @param newFutbolista Objeto que contiene los datos del futbolista a añadir en la base de datos.
+	 * @param result Resultado de la validacion del objeto
+	 * @return Retorna una vista con los datos de los futbolistas cargados en la lista para poder comprobar los cambios.
+	 * @throws Exception Controla que el formato de datos introducidos sean correctos.
+	 */
 	@PostMapping("/actAddFutbolista")
 	private String aniadirFutbolista(@ModelAttribute Futbolistas newFutbolista, BindingResult result) throws Exception {
 
@@ -57,6 +83,15 @@ public class FutbolistaController {
 			throw new Exception("Parámetros de matriculación erróneos");
 		} else {
 
+			final String fecNac = newFutbolista.getAnyoNac();
+			if(!fecNac.isEmpty()) {
+				int anyo = Integer.parseInt(fecNac);
+				
+				if(anyo<=0 || anyo>2999 ) {
+					throw new Exception("No se puede introducir un año menor o igual a 0 o mayor a 2999");
+				}
+			}
+				
 			// Se añade el nuevo coche
 			futbolistaServiceI.aniadirFutbolista(newFutbolista);
 		}
@@ -65,6 +100,13 @@ public class FutbolistaController {
 	}
 	
 
+	/***
+	 * Método que se utiliza para buscar a los futbolistas según los atributos que reciba.
+	 * @param searchedFutbolista Objeto que contiene los datos a buscar en la base de datos.
+	 * @param model Representa la vista
+	 * @return Retorna la lista de futbolistas que cumplen con la búsqueda.
+	 * @throws Exception Controlamos que los datos tengan formatos correctos.
+	 */
 	@PostMapping("/actSearchFutbolista")
 	public String submitBuscarFutbolistaForm(@ModelAttribute Futbolistas searchedFutbolista, Model model) throws Exception {
 
@@ -162,6 +204,13 @@ public class FutbolistaController {
 	}
 	
 	
+	
+	/***
+	 * Método que sirve para recoger los datos que tenemos del futbolista seleccionado en la base de datos.
+	 * @param futId Id del futbolista que vamos a editar
+	 * @param model Representa la vista
+	 * @return Retorna la vista de edición de futbolistas donde se van a mostrar los datos cargados extraidos de la base de datos.
+	 */
 	 @GetMapping("/editFutbolistaView")
 		public String recogerFutbolista(String futId, Model model) {
 
@@ -183,6 +232,13 @@ public class FutbolistaController {
 	 
 	 
 	
+	 /***
+	  * Método que sirve para recoger los datos de los campos de la vista para ser cargados en la base de datos. 
+	  * @param editFutbolista Objeto donde recogemos los datos de los campos de la vista.
+	  * @param result Resultado de la validacion del objeto
+	  * @return Retorna la vista de mostrar todos los fubtolistas para ver los cambios realizados.
+	  * @throws Exception Controlamos que los datos tengan formatos correctos.
+	  */
 	@PostMapping("/actEditFutbolista")
 	public String editarEquipo(@ModelAttribute Futbolistas editFutbolista, BindingResult result) throws Exception {
 
