@@ -32,26 +32,26 @@ public class Futbolistas implements Serializable{
 	/*** 
 	 * Nombre del futbolista 
 	 */
-	@Column(name = "Nombre", nullable = false)
+	@Column(name = "Nombre", length = 31,nullable = false)
 	private String nombre;
 
 	/***
 	 *  Año de nacimiento 
 	 */
-	@Column(name = "Año_nacimiento", nullable = false)
+	@Column(name = "Año_nacimiento", length = 4,nullable = false)
 	private String anyoNac;
 	
 	/***
 	 *  Nacionalidad del futbolista 
 	 */
-	@Column(name = "Nacionalidad", nullable = false)
+	@Column(name = "Nacionalidad",length = 21, nullable = false)
 	private String nacionalidad;
 	
 	
 	/***
 	 *  NIF del futbolista 
 	 */
-	@Column(name = "NIF", nullable = false)
+	@Column(name = "NIF", length = 9, nullable = false)
 	private String nif;
 	
 	

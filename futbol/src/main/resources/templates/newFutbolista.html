@@ -71,7 +71,7 @@
 				<form th:action="@{/actAddFutbolista}" th:object="${newFutbolista}" method="POST">
 					<div class="form-group">
 			  			<label for="inpFutRegs">Nombre</label>
-			  			<input type="text" text-transform: "capitalize" required="required" class="form-control" id="inpFutRegs" name="nombre" placeholder="Nombre">
+			  			<input type="text" maxlength="30" text-transform: "capitalize" required="required" class="form-control" id="inpFutRegs" name="nombre" placeholder="Nombre">
 					</div>
 					<div class="form-group">
 						  <label for="inpFutBrand">Año de nacimiento</label>
@@ -79,11 +79,11 @@
 					</div>
 					<div class="form-group">
 						  <label for="inpFutModel">Nacionalidad</label>
-						  <input required="required" type="text" text-transform: "capitalize" class="form-control" id="inpFutModel" name="nacionalidad" placeholder="Nacionalidad">
+						  <input required="required" maxlength="20" type="text" text-transform: "capitalize" class="form-control" id="inpFutModel" name="nacionalidad" placeholder="Nacionalidad">
 					</div>
 					<div class="form-group">
 						  <label for="inpFutModel">NIF</label>
-						  <input required="required" type="text" text-transform: "capitalize" class="form-control" id="inpFutModel" name="nif" placeholder="NIF">
+						  <input required="required" type="text" maxlength="8" text-transform: "capitalize" class="form-control" id="inpFutModel" name="nif" placeholder="NIF">
 					</div>
 					<button type="submit" name="btnAddFutbolista" class="btn btn-success">Añadir</button>
 					<a class="btn btn-primary" href="index" role="button" id="aBtnReturn">Volver</a>

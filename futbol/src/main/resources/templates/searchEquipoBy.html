@@ -75,7 +75,7 @@
 				<form th:action="@{/actSearchEquipo}" th:object="${searchedEquipo}" method="POST">
 					<div class="form-group">
 			  			<label for="inpRegistration">Nombre</label>
-			  			<input type="text" class="form-control" id="inpTEquRegistr" name="nombre" placeholder="Nombre del equipo.">
+			  			<input type="text" maxlength="30"class="form-control" id="inpTEquRegistr" name="nombre" placeholder="Nombre del equipo.">
 					</div>
 					<div class="form-group">
 						  <label for="inpMarca">Año de creacion</label>
@@ -83,7 +83,7 @@
 					</div>
 					<div class="form-group">
 						  <label for="inpModelo">Estadio</label>
-						  <input type="text" class="form-control" id="inpTmodel" name="estadio" placeholder="Nombre de estadio.">
+						  <input type="text" maxlength="30"class="form-control" id="inpTmodel" name="estadio" placeholder="Nombre de estadio.">
 					</div>
 					<button type="submit" name="btnSearchEquipoBy" class="btn btn-success">Buscar</button>
 					<a class="btn btn-primary" href="index" role="button" id="aBtnReturn">Volver</a>

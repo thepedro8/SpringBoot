@@ -31,7 +31,7 @@ public class Equipo implements Serializable{
 	/***
 	 *  Nombre del equipo (PK) 
 	 */
-	@Column(name = "Nombre", nullable = false)
+	@Column(name = "Nombre", length = 31, nullable = false)
 	private String nombre;
 
 	
@@ -44,7 +44,7 @@ public class Equipo implements Serializable{
 	/***
 	 * Nombre del estadio 
 	 */
-	@Column(name = "Estadio", nullable = false)
+	@Column(name = "Estadio", length = 31,nullable = false)
 	private String estadio;
 
 	

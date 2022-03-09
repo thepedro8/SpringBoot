@@ -47,7 +47,7 @@ public class Futbolista_Equipo implements Serializable{
 	/***
 	 * Año de temporada
 	 */
-	@Column(name = "Anyo_temporada")
+	@Column(name = "Anyo_temporada", length = 4, nullable = false)
 	private String anyo_temp;
 	
 }

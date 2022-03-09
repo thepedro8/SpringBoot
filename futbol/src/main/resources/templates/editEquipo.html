@@ -73,7 +73,7 @@
 							th:value="${id}"/>
 				<div class="form-group">
 		  			<label for="inpEquRegs">Nombre</label>
-		  			<input type="text" required="required" class="form-control" id="inpEquRegs" name="nombre" placeholder="Nombre" th:value="${nombre}">
+		  			<input type="text" maxlength="30" required="required" class="form-control" id="inpEquRegs" name="nombre" placeholder="Nombre" th:value="${nombre}">
 				</div>
 				<div class="form-group">
 					  <label for="inpEquBrand">Año de creación</label>
@@ -81,7 +81,7 @@
 				</div>
 				<div class="form-group">
 					  <label for="inpEquModel">Estadio</label>
-					  <input required="required" type="text" class="form-control" id="inpEquModel" name="estadio" placeholder="Nombre del estadio." th:value="${estadio}">
+					  <input required="required" maxlength="30" type="text" class="form-control" id="inpEquModel" name="estadio" placeholder="Nombre del estadio." th:value="${estadio}">
 				</div>
 				<button type="submit" name="btnEditEquipo" class="btn btn-success">Editar</button>
 				<a class="btn btn-danger" href="index" role="button" id="aBtnReturn">Cancelar</a>

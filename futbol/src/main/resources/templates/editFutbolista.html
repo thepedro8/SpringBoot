@@ -72,7 +72,7 @@
 							th:value="${id}"/>
 					<div class="form-group">
 				  		<label for="inpFutRegs">Nombre</label>
-				  		<input type="text" text-transform: "capitalize" required="required" class="form-control" id="inpFutRegs" name="nombre" placeholder="Nombre" th:value="${nombre}">
+				  		<input type="text" maxlength="30" text-transform: "capitalize" required="required" class="form-control" id="inpFutRegs" name="nombre" placeholder="Nombre" th:value="${nombre}">
 					</div>
 					<div class="form-group">
 						  <label for="inpFutBrand">Año de nacimiento</label>
@@ -80,11 +80,11 @@
 					</div>
 					<div class="form-group">
 						  <label for="inpFutModel">Nacionalidad</label>
-						  <input required="required" type="text" text-transform: "capitalize" class="form-control" id="inpFutModel" name="nacionalidad" placeholder="Nacionalidad" th:value="${nacionalidad}">
+						  <input required="required" maxlength="20" type="text" text-transform: "capitalize" class="form-control" id="inpFutModel" name="nacionalidad" placeholder="Nacionalidad" th:value="${nacionalidad}">
 					</div>
 					<div class="form-group">
 						  <label for="inpFutModel">NIF</label>
-						  <input required="required" type="text" text-transform: "capitalize" class="form-control" id="inpFutModel" name="nif" placeholder="NIF" th:value="${nif}">
+						  <input required="required" maxlength="8" type="text" text-transform: "capitalize" class="form-control" id="inpFutModel" name="nif" placeholder="NIF" th:value="${nif}">
 					</div>
 					<button type="submit" name="btnEditFutbolista" class="btn btn-success">Editar</button>
 					<a class="btn btn-danger" href="index" role="button" id="aBtnReturn">Cancelar</a>
